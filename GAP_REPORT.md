@@ -11,7 +11,7 @@ against the [linodego](https://github.com/linode/linodego) Go SDK implementation
 | Implemented in SDK | 396 |
 | Missing from SDK | 69 |
 | Endpoint coverage | 85.2% |
-| SDK methods with no OpenAPI match | 26 |
+| SDK methods without matching OpenAPI endpoint | 26 |
 
 ## Coverage by Category
 
