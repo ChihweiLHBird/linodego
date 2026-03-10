@@ -4,8 +4,8 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 
 ## Coverage Summary
 - Documented endpoints: 465
-- SDK-implemented endpoints: 397
-- Missing endpoints: 68
+- SDK-implemented endpoints: 407
+- Missing endpoints: 58
 - SDK endpoints not in spec: 26
 - Implemented endpoints with parameter mapping gaps: 128
 
@@ -210,7 +210,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | POST | /{apiVersion}/linode/instances/{linodeId}/rebuild | Implemented | RebuildInstance |
 | POST | /{apiVersion}/linode/instances/{linodeId}/rescue | Implemented | RescueInstance |
 | POST | /{apiVersion}/linode/instances/{linodeId}/resize | Implemented | ResizeInstance |
-| POST | /{apiVersion}/linode/instances/{linodeId}/shutdown | Missing |  |
+| POST | /{apiVersion}/linode/instances/{linodeId}/shutdown | Implemented | ShutdownInstance |
 | GET | /{apiVersion}/linode/instances/{linodeId}/stats | Implemented | GetInstanceStats |
 | GET | /{apiVersion}/linode/instances/{linodeId}/stats/{year}/{month} | Implemented | GetInstanceStatsByDate |
 | GET | /{apiVersion}/linode/instances/{linodeId}/transfer | Implemented | GetInstanceTransfer |
@@ -224,7 +224,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/linode/stackscripts/{stackscriptId} | Implemented | GetStackscript |
 | PUT | /{apiVersion}/linode/stackscripts/{stackscriptId} | Implemented | UpdateStackscript |
 | DELETE | /{apiVersion}/linode/stackscripts/{stackscriptId} | Implemented | DeleteStackscript |
-| GET | /{apiVersion}/linode/types | Missing |  |
+| GET | /{apiVersion}/linode/types | Implemented | ListTypes |
 | GET | /{apiVersion}/linode/types/{typeId} | Implemented | GetType |
 | POST | /{apiVersion}/lke/clusters | Implemented | CreateLKECluster |
 | GET | /{apiVersion}/lke/clusters | Implemented | ListLKEClusters |
@@ -252,8 +252,8 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | DELETE | /{apiVersion}/lke/clusters/{clusterId}/servicetoken | Implemented | DeleteLKEClusterServiceToken |
 | GET | /{apiVersion}/lke/tiers/{tier}/versions | Implemented | ListLKETierVersions |
 | GET | /{apiVersion}/lke/tiers/{tier}/versions/{version} | Implemented | GetLKETierVersion |
-| GET | /{apiVersion}/lke/types | Missing |  |
-| GET | /{apiVersion}/lke/versions | Missing |  |
+| GET | /{apiVersion}/lke/types | Implemented | ListLKETypes |
+| GET | /{apiVersion}/lke/versions | Implemented | ListLKEVersions |
 | GET | /{apiVersion}/lke/versions/{version} | Implemented | GetLKEVersion |
 | POST | /{apiVersion}/longview/clients | Implemented | CreateLongviewClient |
 | GET | /{apiVersion}/longview/clients | Implemented | ListLongviewClients |
@@ -318,7 +318,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | PUT | /{apiVersion}/monitor/streams/{streamId} | Missing |  |
 | DELETE | /{apiVersion}/monitor/streams/{streamId} | Missing |  |
 | GET | /{apiVersion}/monitor/streams/{streamId}/history | Missing |  |
-| GET | /{apiVersion}/network-transfer/prices | Missing |  |
+| GET | /{apiVersion}/network-transfer/prices | Implemented | ListNetworkTransferPrices |
 | POST | /{apiVersion}/networking/firewalls | Implemented | CreateFirewall |
 | GET | /{apiVersion}/networking/firewalls | Implemented | ListFirewalls |
 | GET | /{apiVersion}/networking/firewalls/settings | Implemented | GetFirewallSettings |
@@ -353,7 +353,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | DELETE | /{apiVersion}/networking/vlans/{regionId}/{label} | Missing |  |
 | POST | /{apiVersion}/nodebalancers | Implemented | CreateNodeBalancer |
 | GET | /{apiVersion}/nodebalancers | Implemented | ListNodeBalancers |
-| GET | /{apiVersion}/nodebalancers/types | Missing |  |
+| GET | /{apiVersion}/nodebalancers/types | Implemented | ListNodeBalancerTypes |
 | GET | /{apiVersion}/nodebalancers/{nodeBalancerId} | Implemented | GetNodeBalancer |
 | PUT | /{apiVersion}/nodebalancers/{nodeBalancerId} | Implemented | UpdateNodeBalancer |
 | DELETE | /{apiVersion}/nodebalancers/{nodeBalancerId} | Implemented | DeleteNodeBalancer |
@@ -381,9 +381,9 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | POST | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/access | Implemented | UpdateObjectStorageBucketAccess |
 | GET | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/access | Implemented | GetObjectStorageBucketAccessV2 |
 | PUT | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/access | Missing |  |
-| GET | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-acl | Missing |  |
+| GET | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-acl | Implemented | GetObjectStorageObjectACLConfigV2 |
 | PUT | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-acl | Implemented | UpdateObjectStorageObjectACLConfigV2 |
-| GET | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-list | Missing |  |
+| GET | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-list | Implemented | ListObjectStorageBucketContents |
 | POST | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-url | Implemented | CreateObjectStorageObjectURL |
 | POST | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/ssl | Implemented | UploadObjectStorageBucketCertV2 |
 | GET | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/ssl | Implemented | GetObjectStorageBucketCertV2 |
@@ -441,7 +441,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | PUT | /{apiVersion}/profile/tokens/{tokenId} | Implemented | UpdateToken |
 | DELETE | /{apiVersion}/profile/tokens/{tokenId} | Implemented | DeleteToken |
 | GET | /{apiVersion}/regions | Implemented | ListRegions |
-| GET | /{apiVersion}/regions/availability | Missing |  |
+| GET | /{apiVersion}/regions/availability | Implemented | ListRegionsAvailability |
 | GET | /{apiVersion}/regions/{regionId} | Implemented | GetRegion |
 | GET | /{apiVersion}/regions/{regionId}/availability | Implemented | GetRegionAvailability |
 | POST | /{apiVersion}/support/tickets | Missing |  |
@@ -457,7 +457,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | DELETE | /{apiVersion}/tags/{tagLabel} | Implemented | DeleteTag |
 | POST | /{apiVersion}/volumes | Implemented | CreateVolume |
 | GET | /{apiVersion}/volumes | Implemented | ListVolumes |
-| GET | /{apiVersion}/volumes/types | Missing |  |
+| GET | /{apiVersion}/volumes/types | Implemented | ListVolumeTypes |
 | GET | /{apiVersion}/volumes/{volumeId} | Implemented | GetVolume |
 | PUT | /{apiVersion}/volumes/{volumeId} | Implemented | UpdateVolume |
 | DELETE | /{apiVersion}/volumes/{volumeId} | Implemented | DeleteVolume |
