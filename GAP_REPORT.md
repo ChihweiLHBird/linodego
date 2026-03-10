@@ -1122,6 +1122,7 @@ that are absent from the corresponding SDK Options struct (request body) or resp
 
 > **Note:** Only top-level fields are compared. Nested object/array fields are omitted for brevity.
 > Fields labelled *extra* exist in the SDK but not in the current OpenAPI spec (may be deprecated or from a newer spec).
+> Read-only fields are excluded from request body comparisons.
 
 ### Access keys
 
