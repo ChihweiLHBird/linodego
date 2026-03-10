@@ -22,3 +22,8 @@ vendor/**/
 .env
 coverage.txt
 go.work.sum
+
+# Gap analysis temporary files
+/tmp/*.py
+openapi.json
+openapi.yaml
