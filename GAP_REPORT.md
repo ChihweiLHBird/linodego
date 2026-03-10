@@ -2,15 +2,15 @@
 
 ## Report Metadata
 
-- **Generated**: 2026-03-10 17:02:29 UTC
+- **Generated**: 2026-03-10 17:09:38 UTC
 - **OpenAPI Spec Version**: 4.219.1
 - **Analysis Type**: Static Code Analysis
 
 ## Executive Summary
 
 - **Total API Endpoints**: 465
-- **Implemented in SDK**: 318 (68.4%)
-- **Missing from SDK**: 147
+- **Implemented in SDK**: 344 (74.0%)
+- **Missing from SDK**: 121
   - *Of which deprecated*: 8
 
 ## Endpoint Coverage by Category
@@ -67,11 +67,10 @@
 **Coverage**: 5/5 (100%)
 
 ### Buckets
-**Coverage**: 8/12 (67%)
+**Coverage**: 9/12 (75%)
 
 **Missing Endpoints:**
 
-- `GET /{apiVersion}/object-storage/buckets/{regionId}` - List Object Storage buckets per region
 - `GET /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-acl` - Get an Object Storage object ACL configuration
 - `GET /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-list` - List Object Storage bucket contents
 - `PUT /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/access` - Update access to an Object Storage bucket
@@ -103,18 +102,10 @@
 - `PUT /{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces/{interfaceId}` - Update a configuration profile interface
 
 ### Configuration profiles
-**Coverage**: 4/5 (80%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/linode/instances/{linodeId}/configs` - List configuration profiles
+**Coverage**: 5/5 (100%)
 
 ### Configurations
-**Coverage**: 5/6 (83%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/nodebalancers/{nodeBalancerId}/configs` - List configs
+**Coverage**: 6/6 (100%)
 
 ### Control Plane ACL
 **Coverage**: 0/3 (0%)
@@ -135,11 +126,7 @@
 **Coverage**: 4/4 (100%)
 
 ### Disks
-**Coverage**: 7/8 (88%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/linode/instances/{linodeId}/disks` - List disks
+**Coverage**: 8/8 (100%)
 
 ### Domain zone file
 **Coverage**: 1/1 (100%)
@@ -171,15 +158,12 @@
 **Coverage**: 2/2 (100%)
 
 ### Firewalls
-**Coverage**: 8/14 (57%)
+**Coverage**: 11/14 (79%)
 
 **Missing Endpoints:**
 
-- `GET /{apiVersion}/linode/instances/{linodeId}/firewalls` - List a Linode's firewalls
 - `GET /{apiVersion}/networking/firewalls/{firewallId}/history/rules/{version}` - Get a firewall rule version
-- `GET /{apiVersion}/nodebalancers/{nodeBalancerId}/firewalls` - List NodeBalancer firewalls
 - `POST /{apiVersion}/linode/instances/{linodeId}/firewalls/apply` - Apply a Linode's firewalls
-- `PUT /{apiVersion}/linode/instances/{linodeId}/firewalls` - Update a Linode's firewalls
 - `PUT /{apiVersion}/nodebalancers/{nodeBalancerId}/firewalls` - Update a NodeBalancer's firewalls
 
 ### Grants
@@ -215,7 +199,7 @@
 - `PUT /{apiVersion}/iam/users/{username}/role-permissions` - Update a user's access level
 
 ### Image sharing
-**Coverage**: 0/22 (0%)
+**Coverage**: 7/22 (32%)
 
 **Missing Endpoints:**
 
@@ -225,17 +209,10 @@
 - `DELETE /{apiVersion}/images/sharegroups/{sharegroupId}/members/{tokenUuid}` - Revoke a membership token
 - `GET /{apiVersion}/images/sharegroups` - List share groups
 - `GET /{apiVersion}/images/sharegroups/tokens` - List a user's tokens
-- `GET /{apiVersion}/images/sharegroups/tokens/{tokenUuid}` - Get a token
 - `GET /{apiVersion}/images/sharegroups/tokens/{tokenUuid}/sharegroup` - Get a token's share group
-- `GET /{apiVersion}/images/sharegroups/tokens/{tokenUuid}/sharegroup/images` - List images by token
-- `GET /{apiVersion}/images/sharegroups/{sharegroupId}` - Get a share group
-- `GET /{apiVersion}/images/sharegroups/{sharegroupId}/images` - List shared images by group
-- `GET /{apiVersion}/images/sharegroups/{sharegroupId}/members` - List members by share group
 - `GET /{apiVersion}/images/sharegroups/{sharegroupId}/members/{tokenUuid}` - Get a membership token
-- `GET /{apiVersion}/images/{imageId}/sharegroups` - List share groups by image
 - `POST /{apiVersion}/images/sharegroups` - Create a share group
 - `POST /{apiVersion}/images/sharegroups/tokens` - Create a token
-- `POST /{apiVersion}/images/sharegroups/{sharegroupId}/images` - Add images to a share group
 - `POST /{apiVersion}/images/sharegroups/{sharegroupId}/members` - Add members to a share group
 - `PUT /{apiVersion}/images/sharegroups/tokens/{tokenUuid}` - Update a token
 - `PUT /{apiVersion}/images/sharegroups/{sharegroupId}` - Update a share group
@@ -256,11 +233,7 @@
 - `PUT /{apiVersion}/images/{imageId}` - Update an image
 
 ### Invoices
-**Coverage**: 2/3 (67%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/account/invoices/{invoiceId}/items` - List invoice items
+**Coverage**: 3/3 (100%)
 
 ### Kernels
 **Coverage**: 2/2 (100%)
@@ -269,11 +242,7 @@
 **Coverage**: 2/2 (100%)
 
 ### LKE API endpoints
-**Coverage**: 0/1 (0%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/lke/clusters/{clusterId}/api-endpoints` - List Kubernetes API endpoints
+**Coverage**: 1/1 (100%)
 
 ### LKE service tokens
 **Coverage**: 1/1 (100%)
@@ -286,11 +255,10 @@
 - `GET /{apiVersion}/lke/types` - List Kubernetes types
 
 ### LKE versions
-**Coverage**: 1/4 (25%)
+**Coverage**: 2/4 (50%)
 
 **Missing Endpoints:**
 
-- `GET /{apiVersion}/lke/tiers/{tier}/versions` - List LKE Kubernetes versions (any tier)
 - `GET /{apiVersion}/lke/tiers/{tier}/versions/{version}` - Get an LKE Kubernetes version (any tier)
 - `GET /{apiVersion}/lke/versions` - List LKE Kubernetes versions (non-enterprise)
 
@@ -434,28 +402,16 @@
 - `GET /{apiVersion}/network-transfer/prices` - List network transfer prices
 
 ### Node pools
-**Coverage**: 5/6 (83%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/lke/clusters/{clusterId}/pools` - List node pools
+**Coverage**: 6/6 (100%)
 
 ### NodeBalancer types
 **Coverage**: 1/1 (100%)
 
 ### NodeBalancers
-**Coverage**: 5/6 (83%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/linode/instances/{linodeId}/nodebalancers` - List Linode NodeBalancers
+**Coverage**: 6/6 (100%)
 
 ### Nodes
-**Coverage**: 7/8 (88%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes` - List nodes
+**Coverage**: 8/8 (100%)
 
 ### Notifications
 **Coverage**: 1/1 (100%)
@@ -478,11 +434,10 @@
 **Coverage**: 2/2 (100%)
 
 ### Object Storage
-**Coverage**: 4/6 (67%)
+**Coverage**: 5/6 (83%)
 
 **Missing Endpoints:**
 
-- `GET /{apiVersion}/object-storage/quotas` - List Object Storage quotas
 - `GET /{apiVersion}/object-storage/types` - List Object Storage types
 
 ### Payment methods
@@ -531,11 +486,7 @@
 **Coverage**: 1/1 (100%)
 
 ### Records
-**Coverage**: 4/5 (80%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/domains/{domainId}/records` - List domain records
+**Coverage**: 5/5 (100%)
 
 ### Regions
 **Coverage**: 4/4 (100%)
@@ -578,11 +529,7 @@
 **Coverage**: 3/3 (100%)
 
 ### Tags
-**Coverage**: 3/4 (75%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/tags/{tagLabel}` - List tagged objects
+**Coverage**: 4/4 (100%)
 
 ### Templates
 **Coverage**: 2/2 (100%)
@@ -607,25 +554,13 @@
 - `DELETE /{apiVersion}/networking/vlans/{regionId}/{label}` - Delete a VLAN
 
 ### VPC subnets
-**Coverage**: 4/5 (80%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/vpcs/{vpcId}/subnets` - List VPC subnets
+**Coverage**: 5/5 (100%)
 
 ### VPCs
-**Coverage**: 6/7 (86%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/nodebalancers/{nodeBalancerId}/vpcs` - List VPC configurations
+**Coverage**: 7/7 (100%)
 
 ### Volume types
 **Coverage**: 1/1 (100%)
 
 ### Volumes
-**Coverage**: 9/10 (90%)
-
-**Missing Endpoints:**
-
-- `GET /{apiVersion}/linode/instances/{linodeId}/volumes` - List a Linode's volumes
+**Coverage**: 10/10 (100%)
