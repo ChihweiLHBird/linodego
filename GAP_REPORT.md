@@ -4,8 +4,8 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 
 ## Coverage Summary
 - Documented endpoints: 465
-- SDK-implemented endpoints: 407
-- Missing endpoints: 58
+- SDK-implemented endpoints: 399
+- Missing endpoints: 66
 - SDK endpoints not in spec: 26
 - Implemented endpoints with parameter mapping gaps: 128
 
