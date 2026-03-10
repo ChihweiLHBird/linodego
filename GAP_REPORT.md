@@ -4,10 +4,10 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 
 ## Coverage Summary
 - Documented endpoints: 465
-- SDK-implemented endpoints: 332
-- Missing endpoints: 133
-- SDK endpoints not in spec: 23
-- Implemented endpoints with parameter mapping gaps: 130
+- SDK-implemented endpoints: 388
+- Missing endpoints: 77
+- SDK endpoints not in spec: 25
+- Implemented endpoints with parameter mapping gaps: 127
 
 ## Endpoint Coverage
 | Method | Path | Status | SDK Function |
@@ -23,8 +23,8 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/account/betas/{betaId} | Implemented | GetAccountBetaProgram |
 | POST | /{apiVersion}/account/cancel | Missing |  |
 | GET | /{apiVersion}/account/child-accounts | Implemented | ListChildAccounts |
-| GET | /{apiVersion}/account/child-accounts/{euuId} | Missing |  |
-| POST | /{apiVersion}/account/child-accounts/{euuId}/token | Missing |  |
+| GET | /{apiVersion}/account/child-accounts/{euuId} | Implemented | GetChildAccount |
+| POST | /{apiVersion}/account/child-accounts/{euuId}/token | Implemented | CreateChildAccountToken |
 | POST | /{apiVersion}/account/credit-card | Missing |  |
 | POST | /{apiVersion}/account/entity-transfers | Missing |  |
 | GET | /{apiVersion}/account/entity-transfers | Missing |  |
@@ -36,7 +36,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | POST | /{apiVersion}/account/events/{eventId}/seen | Implemented | MarkEventsSeen |
 | GET | /{apiVersion}/account/invoices | Implemented | ListInvoices |
 | GET | /{apiVersion}/account/invoices/{invoiceId} | Implemented | GetInvoice |
-| GET | /{apiVersion}/account/invoices/{invoiceId}/items | Missing |  |
+| GET | /{apiVersion}/account/invoices/{invoiceId}/items | Implemented | ListInvoiceItems |
 | GET | /{apiVersion}/account/logins | Implemented | ListLogins |
 | GET | /{apiVersion}/account/logins/{loginId} | Implemented | GetLogin |
 | GET | /{apiVersion}/account/maintenance | Implemented | ListMaintenances |
@@ -115,44 +115,44 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | DELETE | /{apiVersion}/domains/{domainId} | Implemented | DeleteDomain |
 | POST | /{apiVersion}/domains/{domainId}/clone | Implemented | CloneDomain |
 | POST | /{apiVersion}/domains/{domainId}/records | Implemented | CreateDomainRecord |
-| GET | /{apiVersion}/domains/{domainId}/records | Missing |  |
+| GET | /{apiVersion}/domains/{domainId}/records | Implemented | ListDomainRecords |
 | GET | /{apiVersion}/domains/{domainId}/records/{recordId} | Implemented | GetDomainRecord |
 | PUT | /{apiVersion}/domains/{domainId}/records/{recordId} | Implemented | UpdateDomainRecord |
 | DELETE | /{apiVersion}/domains/{domainId}/records/{recordId} | Implemented | DeleteDomainRecord |
 | GET | /{apiVersion}/domains/{domainId}/zone-file | Implemented | GetDomainZoneFile |
 | GET | /{apiVersion}/entities | Implemented | ListEntities |
 | GET | /{apiVersion}/iam/role-permissions | Implemented | GetAccountRolePermissions |
-| GET | /{apiVersion}/iam/users/{username}/role-permissions | Missing |  |
-| PUT | /{apiVersion}/iam/users/{username}/role-permissions | Missing |  |
+| GET | /{apiVersion}/iam/users/{username}/role-permissions | Implemented | GetUserRolePermissions |
+| PUT | /{apiVersion}/iam/users/{username}/role-permissions | Implemented | UpdateUserRolePermissions |
 | POST | /{apiVersion}/images | Implemented | CreateImage |
 | GET | /{apiVersion}/images | Implemented | ListImages |
 | POST | /{apiVersion}/images/sharegroups | Implemented | CreateImageShareGroup |
 | GET | /{apiVersion}/images/sharegroups | Implemented | ListImageShareGroups |
-| POST | /{apiVersion}/images/sharegroups/tokens | Missing |  |
+| POST | /{apiVersion}/images/sharegroups/tokens | Implemented | ImageShareGroupCreateToken |
 | GET | /{apiVersion}/images/sharegroups/tokens | Implemented | ImageShareGroupListTokens |
-| GET | /{apiVersion}/images/sharegroups/tokens/{tokenUuid} | Missing |  |
-| PUT | /{apiVersion}/images/sharegroups/tokens/{tokenUuid} | Missing |  |
-| DELETE | /{apiVersion}/images/sharegroups/tokens/{tokenUuid} | Missing |  |
-| GET | /{apiVersion}/images/sharegroups/tokens/{tokenUuid}/sharegroup | Missing |  |
-| GET | /{apiVersion}/images/sharegroups/tokens/{tokenUuid}/sharegroup/images | Missing |  |
-| GET | /{apiVersion}/images/sharegroups/{sharegroupId} | Missing |  |
-| PUT | /{apiVersion}/images/sharegroups/{sharegroupId} | Missing |  |
-| DELETE | /{apiVersion}/images/sharegroups/{sharegroupId} | Missing |  |
-| POST | /{apiVersion}/images/sharegroups/{sharegroupId}/images | Missing |  |
-| GET | /{apiVersion}/images/sharegroups/{sharegroupId}/images | Missing |  |
-| PUT | /{apiVersion}/images/sharegroups/{sharegroupId}/images/{imageId} | Missing |  |
-| DELETE | /{apiVersion}/images/sharegroups/{sharegroupId}/images/{imageId} | Missing |  |
-| POST | /{apiVersion}/images/sharegroups/{sharegroupId}/members | Missing |  |
-| GET | /{apiVersion}/images/sharegroups/{sharegroupId}/members | Missing |  |
-| GET | /{apiVersion}/images/sharegroups/{sharegroupId}/members/{tokenUuid} | Missing |  |
-| PUT | /{apiVersion}/images/sharegroups/{sharegroupId}/members/{tokenUuid} | Missing |  |
-| DELETE | /{apiVersion}/images/sharegroups/{sharegroupId}/members/{tokenUuid} | Missing |  |
+| GET | /{apiVersion}/images/sharegroups/tokens/{tokenUuid} | Implemented | ImageShareGroupGetToken |
+| PUT | /{apiVersion}/images/sharegroups/tokens/{tokenUuid} | Implemented | ImageShareGroupUpdateToken |
+| DELETE | /{apiVersion}/images/sharegroups/tokens/{tokenUuid} | Implemented | ImageShareGroupRemoveToken |
+| GET | /{apiVersion}/images/sharegroups/tokens/{tokenUuid}/sharegroup | Implemented | ImageShareGroupGetByToken |
+| GET | /{apiVersion}/images/sharegroups/tokens/{tokenUuid}/sharegroup/images | Implemented | ImageShareGroupGetImageShareEntriesByToken |
+| GET | /{apiVersion}/images/sharegroups/{sharegroupId} | Implemented | GetImageShareGroup |
+| PUT | /{apiVersion}/images/sharegroups/{sharegroupId} | Implemented | UpdateImageShareGroup |
+| DELETE | /{apiVersion}/images/sharegroups/{sharegroupId} | Implemented | DeleteImageShareGroup |
+| POST | /{apiVersion}/images/sharegroups/{sharegroupId}/images | Implemented | ImageShareGroupAddImages |
+| GET | /{apiVersion}/images/sharegroups/{sharegroupId}/images | Implemented | ImageShareGroupListImageShareEntries |
+| PUT | /{apiVersion}/images/sharegroups/{sharegroupId}/images/{imageId} | Implemented | ImageShareGroupUpdateImageShareEntry |
+| DELETE | /{apiVersion}/images/sharegroups/{sharegroupId}/images/{imageId} | Implemented | ImageShareGroupRemoveImage |
+| POST | /{apiVersion}/images/sharegroups/{sharegroupId}/members | Implemented | ImageShareGroupAddMember |
+| GET | /{apiVersion}/images/sharegroups/{sharegroupId}/members | Implemented | ImageShareGroupListMembers |
+| GET | /{apiVersion}/images/sharegroups/{sharegroupId}/members/{tokenUuid} | Implemented | ImageShareGroupGetMember |
+| PUT | /{apiVersion}/images/sharegroups/{sharegroupId}/members/{tokenUuid} | Implemented | ImageShareGroupUpdateMember |
+| DELETE | /{apiVersion}/images/sharegroups/{sharegroupId}/members/{tokenUuid} | Implemented | ImageShareGroupRemoveMember |
 | POST | /{apiVersion}/images/upload | Implemented | CreateImageUpload |
-| GET | /{apiVersion}/images/{imageId} | Missing |  |
-| PUT | /{apiVersion}/images/{imageId} | Missing |  |
-| DELETE | /{apiVersion}/images/{imageId} | Missing |  |
-| POST | /{apiVersion}/images/{imageId}/regions | Missing |  |
-| GET | /{apiVersion}/images/{imageId}/sharegroups | Missing |  |
+| GET | /{apiVersion}/images/{imageId} | Implemented | GetImage |
+| PUT | /{apiVersion}/images/{imageId} | Implemented | UpdateImage |
+| DELETE | /{apiVersion}/images/{imageId} | Implemented | DeleteImage |
+| POST | /{apiVersion}/images/{imageId}/regions | Implemented | ReplicateImage |
+| GET | /{apiVersion}/images/{imageId}/sharegroups | Implemented | ListImageShareGroupsContainingPrivateImage |
 | POST | /{apiVersion}/linode/instances | Implemented | CreateInstance |
 | GET | /{apiVersion}/linode/instances | Implemented | ListInstances |
 | GET | /{apiVersion}/linode/instances/{linodeId} | Implemented | GetInstance |
@@ -167,7 +167,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | POST | /{apiVersion}/linode/instances/{linodeId}/boot | Implemented | BootInstance |
 | POST | /{apiVersion}/linode/instances/{linodeId}/clone | Implemented | CloneInstance |
 | POST | /{apiVersion}/linode/instances/{linodeId}/configs | Implemented | CreateInstanceConfig |
-| GET | /{apiVersion}/linode/instances/{linodeId}/configs | Missing |  |
+| GET | /{apiVersion}/linode/instances/{linodeId}/configs | Implemented | ListInstanceConfigs |
 | GET | /{apiVersion}/linode/instances/{linodeId}/configs/{configId} | Implemented | GetInstanceConfig |
 | PUT | /{apiVersion}/linode/instances/{linodeId}/configs/{configId} | Implemented | UpdateInstanceConfig |
 | DELETE | /{apiVersion}/linode/instances/{linodeId}/configs/{configId} | Implemented | DeleteInstanceConfig |
@@ -178,15 +178,15 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | PUT | /{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces/{interfaceId} | Implemented | UpdateInstanceConfigInterface |
 | DELETE | /{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces/{interfaceId} | Implemented | DeleteInstanceConfigInterface |
 | POST | /{apiVersion}/linode/instances/{linodeId}/disks | Implemented | CreateInstanceDisk |
-| GET | /{apiVersion}/linode/instances/{linodeId}/disks | Missing |  |
+| GET | /{apiVersion}/linode/instances/{linodeId}/disks | Implemented | ListInstanceDisks |
 | GET | /{apiVersion}/linode/instances/{linodeId}/disks/{diskId} | Implemented | GetInstanceDisk |
 | PUT | /{apiVersion}/linode/instances/{linodeId}/disks/{diskId} | Implemented | UpdateInstanceDisk |
 | DELETE | /{apiVersion}/linode/instances/{linodeId}/disks/{diskId} | Implemented | DeleteInstanceDisk |
 | POST | /{apiVersion}/linode/instances/{linodeId}/disks/{diskId}/clone | Implemented | CloneInstanceDisk |
 | POST | /{apiVersion}/linode/instances/{linodeId}/disks/{diskId}/password | Implemented | PasswordResetInstanceDisk |
 | POST | /{apiVersion}/linode/instances/{linodeId}/disks/{diskId}/resize | Implemented | ResizeInstanceDisk |
-| GET | /{apiVersion}/linode/instances/{linodeId}/firewalls | Missing |  |
-| PUT | /{apiVersion}/linode/instances/{linodeId}/firewalls | Missing |  |
+| GET | /{apiVersion}/linode/instances/{linodeId}/firewalls | Implemented | ListInstanceFirewalls |
+| PUT | /{apiVersion}/linode/instances/{linodeId}/firewalls | Implemented | UpdateInstanceFirewalls |
 | POST | /{apiVersion}/linode/instances/{linodeId}/firewalls/apply | Missing |  |
 | POST | /{apiVersion}/linode/instances/{linodeId}/interfaces | Implemented | CreateInterface |
 | GET | /{apiVersion}/linode/instances/{linodeId}/interfaces | Implemented | ListInterfaces |
@@ -204,7 +204,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | DELETE | /{apiVersion}/linode/instances/{linodeId}/ips/{address} | Implemented | DeleteInstanceIPAddress |
 | POST | /{apiVersion}/linode/instances/{linodeId}/migrate | Implemented | MigrateInstance |
 | POST | /{apiVersion}/linode/instances/{linodeId}/mutate | Implemented | UpgradeInstance |
-| GET | /{apiVersion}/linode/instances/{linodeId}/nodebalancers | Missing |  |
+| GET | /{apiVersion}/linode/instances/{linodeId}/nodebalancers | Implemented | ListInstanceNodeBalancers |
 | POST | /{apiVersion}/linode/instances/{linodeId}/password | Implemented | ResetInstancePassword |
 | POST | /{apiVersion}/linode/instances/{linodeId}/reboot | Implemented | RebootInstance |
 | POST | /{apiVersion}/linode/instances/{linodeId}/rebuild | Implemented | RebuildInstance |
@@ -216,7 +216,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/linode/instances/{linodeId}/transfer | Implemented | GetInstanceTransfer |
 | GET | /{apiVersion}/linode/instances/{linodeId}/transfer/{year}/{month} | Implemented | GetInstanceTransferMonthlyV2 |
 | POST | /{apiVersion}/linode/instances/{linodeId}/upgrade-interfaces | Implemented | UpgradeInterfaces |
-| GET | /{apiVersion}/linode/instances/{linodeId}/volumes | Missing |  |
+| GET | /{apiVersion}/linode/instances/{linodeId}/volumes | Implemented | ListInstanceVolumes |
 | GET | /{apiVersion}/linode/kernels | Implemented | ListKernels |
 | GET | /{apiVersion}/linode/kernels/{kernelId} | Implemented | GetKernel |
 | POST | /{apiVersion}/linode/stackscripts | Implemented | CreateStackscript |
@@ -231,10 +231,10 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/lke/clusters/{clusterId} | Implemented | GetLKECluster |
 | PUT | /{apiVersion}/lke/clusters/{clusterId} | Implemented | UpdateLKECluster |
 | DELETE | /{apiVersion}/lke/clusters/{clusterId} | Implemented | DeleteLKECluster |
-| GET | /{apiVersion}/lke/clusters/{clusterId}/api-endpoints | Missing |  |
-| GET | /{apiVersion}/lke/clusters/{clusterId}/control_plane_acl | Missing |  |
-| PUT | /{apiVersion}/lke/clusters/{clusterId}/control_plane_acl | Missing |  |
-| DELETE | /{apiVersion}/lke/clusters/{clusterId}/control_plane_acl | Missing |  |
+| GET | /{apiVersion}/lke/clusters/{clusterId}/api-endpoints | Implemented | ListLKEClusterAPIEndpoints |
+| GET | /{apiVersion}/lke/clusters/{clusterId}/control_plane_acl | Implemented | GetLKEClusterControlPlaneACL |
+| PUT | /{apiVersion}/lke/clusters/{clusterId}/control_plane_acl | Implemented | UpdateLKEClusterControlPlaneACL |
+| DELETE | /{apiVersion}/lke/clusters/{clusterId}/control_plane_acl | Implemented | DeleteLKEClusterControlPlaneACL |
 | GET | /{apiVersion}/lke/clusters/{clusterId}/dashboard | Implemented | GetLKEClusterDashboard |
 | GET | /{apiVersion}/lke/clusters/{clusterId}/kubeconfig | Implemented | GetLKEClusterKubeconfig |
 | DELETE | /{apiVersion}/lke/clusters/{clusterId}/kubeconfig | Implemented | DeleteLKEClusterKubeconfig |
@@ -242,7 +242,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | DELETE | /{apiVersion}/lke/clusters/{clusterId}/nodes/{nodeId} | Implemented | DeleteLKENodePoolNode |
 | POST | /{apiVersion}/lke/clusters/{clusterId}/nodes/{nodeId}/recycle | Implemented | RecycleLKENodePoolNode |
 | POST | /{apiVersion}/lke/clusters/{clusterId}/pools | Implemented | CreateLKENodePool |
-| GET | /{apiVersion}/lke/clusters/{clusterId}/pools | Missing |  |
+| GET | /{apiVersion}/lke/clusters/{clusterId}/pools | Implemented | ListLKENodePools |
 | GET | /{apiVersion}/lke/clusters/{clusterId}/pools/{poolId} | Implemented | GetLKENodePool |
 | PUT | /{apiVersion}/lke/clusters/{clusterId}/pools/{poolId} | Implemented | UpdateLKENodePool |
 | DELETE | /{apiVersion}/lke/clusters/{clusterId}/pools/{poolId} | Implemented | DeleteLKENodePool |
@@ -250,8 +250,8 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | POST | /{apiVersion}/lke/clusters/{clusterId}/recycle | Implemented | RecycleLKEClusterNodes |
 | POST | /{apiVersion}/lke/clusters/{clusterId}/regenerate | Implemented | RegenerateLKECluster |
 | DELETE | /{apiVersion}/lke/clusters/{clusterId}/servicetoken | Implemented | DeleteLKEClusterServiceToken |
-| GET | /{apiVersion}/lke/tiers/{tier}/versions | Missing |  |
-| GET | /{apiVersion}/lke/tiers/{tier}/versions/{version} | Missing |  |
+| GET | /{apiVersion}/lke/tiers/{tier}/versions | Implemented | ListLKETierVersions |
+| GET | /{apiVersion}/lke/tiers/{tier}/versions/{version} | Implemented | GetLKETierVersion |
 | GET | /{apiVersion}/lke/types | Missing |  |
 | GET | /{apiVersion}/lke/versions | Missing |  |
 | GET | /{apiVersion}/lke/versions/{version} | Implemented | GetLKEVersion |
@@ -329,7 +329,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | PUT | /{apiVersion}/networking/firewalls/{firewallId} | Implemented | UpdateFirewall |
 | DELETE | /{apiVersion}/networking/firewalls/{firewallId} | Implemented | DeleteFirewall |
 | POST | /{apiVersion}/networking/firewalls/{firewallId}/devices | Implemented | CreateFirewallDevice |
-| GET | /{apiVersion}/networking/firewalls/{firewallId}/devices | Missing |  |
+| GET | /{apiVersion}/networking/firewalls/{firewallId}/devices | Implemented | ListFirewallDevices |
 | GET | /{apiVersion}/networking/firewalls/{firewallId}/devices/{deviceId} | Implemented | GetFirewallDevice |
 | DELETE | /{apiVersion}/networking/firewalls/{firewallId}/devices/{deviceId} | Implemented | DeleteFirewallDevice |
 | GET | /{apiVersion}/networking/firewalls/{firewallId}/history | Missing |  |
@@ -358,24 +358,24 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | PUT | /{apiVersion}/nodebalancers/{nodeBalancerId} | Implemented | UpdateNodeBalancer |
 | DELETE | /{apiVersion}/nodebalancers/{nodeBalancerId} | Implemented | DeleteNodeBalancer |
 | POST | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs | Implemented | CreateNodeBalancerConfig |
-| GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs | Missing |  |
+| GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs | Implemented | ListNodeBalancerConfigs |
 | GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId} | Implemented | GetNodeBalancerConfig |
 | PUT | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId} | Implemented | UpdateNodeBalancerConfig |
 | DELETE | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId} | Implemented | DeleteNodeBalancerConfig |
 | POST | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes | Implemented | CreateNodeBalancerNode |
-| GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes | Missing |  |
+| GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes | Implemented | ListNodeBalancerNodes |
 | GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes/{nodeId} | Implemented | GetNodeBalancerNode |
 | PUT | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes/{nodeId} | Implemented | UpdateNodeBalancerNode |
 | DELETE | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes/{nodeId} | Implemented | DeleteNodeBalancerNode |
 | POST | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/rebuild | Implemented | RebuildNodeBalancerConfig |
-| GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/firewalls | Missing |  |
+| GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/firewalls | Implemented | ListNodeBalancerFirewalls |
 | PUT | /{apiVersion}/nodebalancers/{nodeBalancerId}/firewalls | Missing |  |
 | GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/stats | Implemented | GetNodeBalancerStats |
-| GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/vpcs | Missing |  |
+| GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/vpcs | Implemented | ListNodeBalancerVPCConfigs |
 | GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/vpcs/{nodeBalancerVpcConfigId} | Implemented | GetNodeBalancerVPCConfig |
 | POST | /{apiVersion}/object-storage/buckets | Implemented | CreateObjectStorageBucket |
 | GET | /{apiVersion}/object-storage/buckets | Implemented | ListObjectStorageBuckets |
-| GET | /{apiVersion}/object-storage/buckets/{regionId} | Missing |  |
+| GET | /{apiVersion}/object-storage/buckets/{regionId} | Implemented | ListObjectStorageBucketsInCluster |
 | GET | /{apiVersion}/object-storage/buckets/{regionId}/{bucket} | Implemented | GetObjectStorageBucket |
 | DELETE | /{apiVersion}/object-storage/buckets/{regionId}/{bucket} | Implemented | DeleteObjectStorageBucket |
 | POST | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/access | Implemented | UpdateObjectStorageBucketAccess |
@@ -397,18 +397,18 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/object-storage/keys/{keyId} | Implemented | GetObjectStorageKey |
 | PUT | /{apiVersion}/object-storage/keys/{keyId} | Implemented | UpdateObjectStorageKey |
 | DELETE | /{apiVersion}/object-storage/keys/{keyId} | Implemented | DeleteObjectStorageKey |
-| GET | /{apiVersion}/object-storage/quotas | Missing |  |
+| GET | /{apiVersion}/object-storage/quotas | Implemented | ListObjectStorageQuotas |
 | GET | /{apiVersion}/object-storage/quotas/{objQuotaId} | Implemented | GetObjectStorageQuota |
 | GET | /{apiVersion}/object-storage/quotas/{objQuotaId}/usage | Implemented | GetObjectStorageQuotaUsage |
 | GET | /{apiVersion}/object-storage/transfer | Implemented | GetObjectStorageTransfer |
 | GET | /{apiVersion}/object-storage/types | Missing |  |
 | POST | /{apiVersion}/placement/groups | Implemented | CreatePlacementGroup |
 | GET | /{apiVersion}/placement/groups | Implemented | ListPlacementGroups |
-| GET | /{apiVersion}/placement/groups/{groupId} | Missing |  |
-| PUT | /{apiVersion}/placement/groups/{groupId} | Missing |  |
-| DELETE | /{apiVersion}/placement/groups/{groupId} | Missing |  |
-| POST | /{apiVersion}/placement/groups/{groupId}/assign | Missing |  |
-| POST | /{apiVersion}/placement/groups/{groupId}/unassign | Missing |  |
+| GET | /{apiVersion}/placement/groups/{groupId} | Implemented | GetPlacementGroup |
+| PUT | /{apiVersion}/placement/groups/{groupId} | Implemented | UpdatePlacementGroup |
+| DELETE | /{apiVersion}/placement/groups/{groupId} | Implemented | DeletePlacementGroup |
+| POST | /{apiVersion}/placement/groups/{groupId}/assign | Implemented | AssignPlacementGroupLinodes |
+| POST | /{apiVersion}/placement/groups/{groupId}/unassign | Implemented | UnassignPlacementGroupLinodes |
 | GET | /{apiVersion}/profile | Implemented | GetProfile |
 | PUT | /{apiVersion}/profile | Implemented | UpdateProfile |
 | GET | /{apiVersion}/profile/apps | Implemented | ListProfileApps |
@@ -453,7 +453,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/support/tickets/{ticketId}/replies | Missing |  |
 | POST | /{apiVersion}/tags | Implemented | CreateTag |
 | GET | /{apiVersion}/tags | Implemented | ListTags |
-| GET | /{apiVersion}/tags/{tagLabel} | Missing |  |
+| GET | /{apiVersion}/tags/{tagLabel} | Implemented | ListTaggedObjects |
 | DELETE | /{apiVersion}/tags/{tagLabel} | Implemented | DeleteTag |
 | POST | /{apiVersion}/volumes | Implemented | CreateVolume |
 | GET | /{apiVersion}/volumes | Implemented | ListVolumes |
@@ -473,7 +473,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | DELETE | /{apiVersion}/vpcs/{vpcId} | Implemented | DeleteVPC |
 | GET | /{apiVersion}/vpcs/{vpcId}/ips | Missing |  |
 | POST | /{apiVersion}/vpcs/{vpcId}/subnets | Implemented | CreateVPCSubnet |
-| GET | /{apiVersion}/vpcs/{vpcId}/subnets | Missing |  |
+| GET | /{apiVersion}/vpcs/{vpcId}/subnets | Implemented | ListVPCSubnets |
 | GET | /{apiVersion}/vpcs/{vpcId}/subnets/{vpcSubnetId} | Implemented | GetVPCSubnet |
 | PUT | /{apiVersion}/vpcs/{vpcId}/subnets/{vpcSubnetId} | Implemented | UpdateVPCSubnet |
 | DELETE | /{apiVersion}/vpcs/{vpcId}/subnets/{vpcSubnetId} | Implemented | DeleteVPCSubnet |
@@ -487,6 +487,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/account/child-accounts | ListChildAccounts | - | - | page;page_size | - |
 | GET | /{apiVersion}/account/events | ListEvents | - | - | page;page_size | - |
 | GET | /{apiVersion}/account/invoices | ListInvoices | - | - | page;page_size | - |
+| GET | /{apiVersion}/account/invoices/{invoiceId}/items | ListInvoiceItems | - | - | page;page_size | - |
 | POST | /{apiVersion}/account/oauth-clients | CreateOAuthClient | - | label;public;redirect_uri | - | - |
 | GET | /{apiVersion}/account/oauth-clients | ListOAuthClients | - | - | page;page_size | - |
 | PUT | /{apiVersion}/account/oauth-clients/{clientId} | UpdateOAuthClient | id;secret;status;thumbnail_url | - | - | - |
@@ -516,9 +517,12 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | POST | /{apiVersion}/domains/import | ImportDomain | remote_nameserver | remove_nameserver | - | - |
 | PUT | /{apiVersion}/domains/{domainId} | UpdateDomain | id | - | - | - |
 | POST | /{apiVersion}/domains/{domainId}/records | CreateDomainRecord | - | name;port;priority;protocol;service;tag;target;ttl_sec;type;weight | - | - |
+| GET | /{apiVersion}/domains/{domainId}/records | ListDomainRecords | - | - | page;page_size | - |
 | PUT | /{apiVersion}/domains/{domainId}/records/{recordId} | UpdateDomainRecord | - | type | - | - |
 | GET | /{apiVersion}/images | ListImages | - | - | page;page_size | - |
 | GET | /{apiVersion}/images/sharegroups | ListImageShareGroups | - | - | page;page_size | - |
+| POST | /{apiVersion}/images/sharegroups/{sharegroupId}/images | ImageShareGroupAddImages | images | - | - | - |
+| PUT | /{apiVersion}/images/{imageId} | UpdateImage | capabilities;created;created_by;deprecated;eol;expiry;id;is_public;is_shared;regions;size;status;total_size;type;updated;vendor | - | - | - |
 | POST | /{apiVersion}/linode/instances | CreateInstance | - | authorized_keys;authorized_users;backup_id;backups_enabled;booted;disk_encryption;firewall_id;group;image;interface_generation;ipv4;label;maintenance_policy;metadata;network_helper;placement_group;private_ip;region;root_pass;stackscript_data;stackscript_id;swap_size;tags;type | - | - |
 | GET | /{apiVersion}/linode/instances | ListInstances | - | - | page;page_size | - |
 | PUT | /{apiVersion}/linode/instances/{linodeId} | UpdateInstance | capabilities;created;disk_encryption;has_user_data;host_uuid;hypervisor;id;image;interface_generation;ipv4;ipv6;lke_cluster_id;placement_group;region;specs;status;type;updated | - | - | - |
@@ -526,17 +530,22 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | POST | /{apiVersion}/linode/instances/{linodeId}/boot | BootInstance | config_id | - | - | - |
 | POST | /{apiVersion}/linode/instances/{linodeId}/clone | CloneInstance | maintenance_policy | - | - | - |
 | POST | /{apiVersion}/linode/instances/{linodeId}/configs | CreateInstanceConfig | - | comments;devices;helpers;init_rd;interfaces;kernel;label;memory_limit;root_device;run_level;virt_mode | - | - |
+| GET | /{apiVersion}/linode/instances/{linodeId}/configs | ListInstanceConfigs | - | - | page;page_size | - |
 | PUT | /{apiVersion}/linode/instances/{linodeId}/configs/{configId} | UpdateInstanceConfig | id | init_rd | - | - |
 | POST | /{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces | AppendInstanceConfigInterface | - | ip_ranges;ipam_address;ipv4;ipv6;label;primary;purpose;subnet_id | - | - |
 | PUT | /{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces/{interfaceId} | UpdateInstanceConfigInterface | - | ipv6 | - | - |
 | POST | /{apiVersion}/linode/instances/{linodeId}/disks | CreateInstanceDisk | - | authorized_keys;authorized_users;filesystem;image;label;root_pass;size;stackscript_data;stackscript_id | - | - |
+| GET | /{apiVersion}/linode/instances/{linodeId}/disks | ListInstanceDisks | - | - | page;page_size | - |
 | POST | /{apiVersion}/linode/instances/{linodeId}/disks/{diskId}/password | PasswordResetInstanceDisk | password | - | - | - |
 | POST | /{apiVersion}/linode/instances/{linodeId}/disks/{diskId}/resize | ResizeInstanceDisk | size | - | - | - |
+| GET | /{apiVersion}/linode/instances/{linodeId}/firewalls | ListInstanceFirewalls | - | - | page;page_size | - |
+| PUT | /{apiVersion}/linode/instances/{linodeId}/firewalls | UpdateInstanceFirewalls | firewall_ids | - | page;page_size | - |
 | POST | /{apiVersion}/linode/instances/{linodeId}/interfaces | CreateInterface | - | default_route;firewall_id;public;vlan;vpc | - | - |
 | PUT | /{apiVersion}/linode/instances/{linodeId}/interfaces/{interfaceId} | UpdateInterface | - | default_route;public;vpc | - | - |
 | POST | /{apiVersion}/linode/instances/{linodeId}/ips | AssignInstanceReservedIP | - | address | - | - |
 | POST | /{apiVersion}/linode/instances/{linodeId}/reboot | RebootInstance | config_id | - | - | - |
 | POST | /{apiVersion}/linode/instances/{linodeId}/rebuild | RebuildInstance | - | authorized_keys;authorized_users;booted;disk_encryption;image;metadata;root_pass;stackscript_data;stackscript_id;type | - | - |
+| GET | /{apiVersion}/linode/instances/{linodeId}/volumes | ListInstanceVolumes | - | - | page;page_size | - |
 | GET | /{apiVersion}/linode/kernels | ListKernels | - | - | page;page_size | - |
 | POST | /{apiVersion}/linode/stackscripts | CreateStackscript | - | description;images;is_public;label;rev_note;script | - | - |
 | GET | /{apiVersion}/linode/stackscripts | ListStackscripts | - | - | page;page_size | - |
@@ -554,6 +563,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/networking/firewalls/templates | ListFirewallTemplates | - | - | page;page_size | - |
 | GET | /{apiVersion}/networking/firewalls/templates/{slug} | GetFirewallTemplate | - | - | page;page_size | - |
 | POST | /{apiVersion}/networking/firewalls/{firewallId}/devices | CreateFirewallDevice | - | id;type | - | - |
+| GET | /{apiVersion}/networking/firewalls/{firewallId}/devices | ListFirewallDevices | - | - | page;page_size | - |
 | PUT | /{apiVersion}/networking/firewalls/{firewallId}/rules | UpdateFirewallRules | - | inbound;inbound_policy;outbound;outbound_policy | - | - |
 | POST | /{apiVersion}/networking/ips | AllocateReserveIP | - | region;reserved | - | - |
 | GET | /{apiVersion}/networking/ips | ListIPAddresses | - | - | skip_ipv6_rdns | - |
@@ -564,15 +574,19 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/nodebalancers | ListNodeBalancers | - | - | page;page_size | - |
 | PUT | /{apiVersion}/nodebalancers/{nodeBalancerId} | UpdateNodeBalancer | created;hostname;id;ipv4;ipv6;lke_cluster;region;transfer;type;updated | client_udp_sess_throttle | - | - |
 | POST | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs | CreateNodeBalancerConfig | - | algorithm;check;check_attempts;check_body;check_interval;check_passive;check_path;check_timeout;cipher_suite;nodes;port;protocol;proxy_protocol;ssl_cert;ssl_key;stickiness;udp_check_port | - | - |
+| GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs | ListNodeBalancerConfigs | - | - | page;page_size | - |
 | PUT | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId} | UpdateNodeBalancerConfig | - | algorithm;check;check_attempts;check_body;check_interval;check_passive;check_path;check_timeout;cipher_suite;nodes;port;protocol;proxy_protocol;ssl_cert;ssl_key;stickiness;udp_check_port | - | - |
 | POST | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes | CreateNodeBalancerNode | - | address;label;mode;subnet_id;weight | - | - |
+| GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes | ListNodeBalancerNodes | - | - | page;page_size | - |
 | PUT | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/nodes/{nodeId} | UpdateNodeBalancerNode | - | address;label;mode;subnet_id;weight | - | - |
 | POST | /{apiVersion}/nodebalancers/{nodeBalancerId}/configs/{configId}/rebuild | RebuildNodeBalancerConfig | - | algorithm;check;check_attempts;check_body;check_interval;check_passive;check_path;check_timeout;cipher_suite;nodes;port;protocol;proxy_protocol;ssl_cert;ssl_key;stickiness;udp_check_port | - | - |
+| GET | /{apiVersion}/nodebalancers/{nodeBalancerId}/vpcs | ListNodeBalancerVPCConfigs | - | - | page;page_size | - |
 | POST | /{apiVersion}/object-storage/buckets | CreateObjectStorageBucket | - | cluster | - | - |
 | POST | /{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-url | CreateObjectStorageObjectURL | - | content_disposition | - | - |
 | POST | /{apiVersion}/object-storage/keys | CreateObjectStorageKey | - | bucket_access;label;regions | - | - |
 | POST | /{apiVersion}/placement/groups | CreatePlacementGroup | - | label;placement_group_policy;placement_group_type;region | - | - |
 | GET | /{apiVersion}/placement/groups | ListPlacementGroups | - | - | page;page_size | - |
+| POST | /{apiVersion}/placement/groups/{groupId}/assign | AssignPlacementGroupLinodes | - | compliant_only | - | - |
 | PUT | /{apiVersion}/profile | UpdateProfile | authentication_type;referrals;uid;username;verified_phone_number | - | - | - |
 | GET | /{apiVersion}/profile/apps | ListProfileApps | - | - | page;page_size | - |
 | POST | /{apiVersion}/profile/sshkeys | CreateSSHKey | created;id | - | - | - |
@@ -581,6 +595,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/support/tickets | ListTickets | - | - | page;page_size | - |
 | POST | /{apiVersion}/tags | CreateTag | - | lke_clusters | - | - |
 | GET | /{apiVersion}/tags | ListTags | - | - | page;page_size | - |
+| GET | /{apiVersion}/tags/{tagLabel} | ListTaggedObjects | - | - | page;page_size | - |
 | POST | /{apiVersion}/volumes | CreateVolume | - | persist_across_boots | - | - |
 | GET | /{apiVersion}/volumes | ListVolumes | - | - | page;page_size | - |
 | GET | /{apiVersion}/volumes/{volumeId} | GetVolume | - | - | page;page_size | - |
@@ -591,17 +606,20 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/vpcs | ListVPCs | - | - | page;page_size | - |
 | GET | /{apiVersion}/vpcs/ips | ListAllVPCIPAddresses | - | - | page;page_size | - |
 | POST | /{apiVersion}/vpcs/{vpcId}/subnets | CreateVPCSubnet | - | ipv6 | - | - |
+| GET | /{apiVersion}/vpcs/{vpcId}/subnets | ListVPCSubnets | - | - | page;page_size | - |
 ## SDK Endpoints Not In Spec
 | Method | Path | SDK Function |
 |---|---|---|
 | POST | account/events/%d/read | MarkEventRead |
 | POST | account/payment-methods/%d | SetDefaultPaymentMethod |
+| GET | iam/users/%s/permissions/%s/%d | GetEntityRoles |
 | GET | networking/firewalls/%d/rules/expansion | GetFirewallRulesExpansion |
 | GET | networking/firewalls/rulesets | ListFirewallRuleSets |
 | POST | networking/firewalls/rulesets | CreateFirewallRuleSet |
 | GET | networking/firewalls/rulesets/%d | GetFirewallRuleSet |
 | PUT | networking/firewalls/rulesets/%d | UpdateFirewallRuleSet |
 | DELETE | networking/firewalls/rulesets/%d | DeleteFirewallRuleSet |
+| GET | iam/users/%s/permissions/account | GetUserAccountPermissions |
 | POST | linode/instances/%d/%s | simpleInstanceAction |
 | GET | locks | ListLocks |
 | GET | locks/%d | GetLock |
