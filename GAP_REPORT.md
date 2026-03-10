@@ -8,10 +8,10 @@
 
 ```text
 Total Endpoints:    465
-✅ Implemented:     373 (80.2%)
-❌ Missing:         92
+✅ Implemented:     382 (82.2%)
+❌ Missing:         83
 
-Progress: [████████████████░░░░] 80.2%
+Progress: [████████████████░░░░] 82.2%
 ```
 
 ---
@@ -112,14 +112,14 @@ Progress: [████████████████░░░░] 80.2%
 
 ### 🔴 Low Coverage (< 50%)
 
-- **Image sharing**: 7/22 (32%)
+- **Image sharing**: 10/22 (45%)
 - **Configuration profile interfaces**: 1/6 (17%)
 - **Attachments**: 0/1 (0%)
-- **Child accounts**: 0/3 (0%)
+- **Child accounts**: 1/3 (33%)
 - **Control Plane ACL**: 0/3 (0%)
 - **Entity transfers**: 0/5 (0%)
 - **IPv4 addresses**: 0/2 (0%)
-- **Images**: 0/7 (0%)
+- **Images**: 3/7 (43%)
 - **LKE types**: 0/1 (0%)
 - **Logs**: 0/12 (0%)
 - **Longview types**: 0/1 (0%)
@@ -132,7 +132,7 @@ Progress: [████████████████░░░░] 80.2%
 - **Managed statistics**: 0/1 (0%)
 - **Network transfer prices**: 0/1 (0%)
 - **OAuth client**: 0/2 (0%)
-- **Placement groups**: 0/7 (0%)
+- **Placement groups**: 2/7 (29%)
 - **Replies**: 0/2 (0%)
 
 ---
@@ -142,10 +142,6 @@ Progress: [████████████████░░░░] 80.2%
 ### 📁 Logs
 
 🔴 **Coverage**: 0/12 (0%)
-
-**Missing 12 endpoint(s):**
-
-#### `GET` — 6 endpoint(s)
 
 - **`/{apiVersion}/monitor/streams`**
   - *List streams*
@@ -194,10 +190,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🔴 **Coverage**: 0/7 (0%)
 
-**Missing 7 endpoint(s):**
-
-#### `GET` — 2 endpoint(s)
-
 - **`/{apiVersion}/managed/services`**
   - *List managed services*
 
@@ -230,10 +222,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🔴 **Coverage**: 0/6 (0%)
 
-**Missing 6 endpoint(s):**
-
-#### `GET` — 2 endpoint(s)
-
 - **`/{apiVersion}/managed/credentials`**
   - *List managed credentials*
 
@@ -261,10 +249,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🔴 **Coverage**: 1/6 (17%)
 
-**Missing 5 endpoint(s):**
-
-#### `GET` — 2 endpoint(s)
-
 - **`/{apiVersion}/linode/instances/{linodeId}/configs/{configId}/interfaces`**
   - *List configuration profile interfaces*
 
@@ -291,10 +275,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🔴 **Coverage**: 0/5 (0%)
 
-**Missing 5 endpoint(s):**
-
-#### `GET` — 2 endpoint(s)
-
 - **`/{apiVersion}/account/entity-transfers`**
   - *List entity transfers (deprecated)*
 
@@ -318,10 +298,6 @@ Progress: [████████████████░░░░] 80.2%
 ### 📁 Managed contacts
 
 🔴 **Coverage**: 0/5 (0%)
-
-**Missing 5 endpoint(s):**
-
-#### `GET` — 2 endpoint(s)
 
 - **`/{apiVersion}/managed/contacts`**
   - *List managed contacts*
@@ -349,10 +325,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🟠 **Coverage**: 4/7 (57%)
 
-**Missing 3 endpoint(s):**
-
-#### `GET` — 3 endpoint(s)
-
 - **`/{apiVersion}/monitor/alert-channels`**
   - *List alert channels*
 
@@ -366,10 +338,6 @@ Progress: [████████████████░░░░] 80.2%
 ### 📁 Buckets
 
 🟡 **Coverage**: 9/12 (75%)
-
-**Missing 3 endpoint(s):**
-
-#### `GET` — 2 endpoint(s)
 
 - **`/{apiVersion}/object-storage/buckets/{regionId}/{bucket}/object-acl`**
   - *Get an Object Storage object ACL configuration*
@@ -387,10 +355,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🟡 **Coverage**: 11/14 (79%)
 
-**Missing 3 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
-
 - **`/{apiVersion}/networking/firewalls/{firewallId}/history/rules/{version}`**
   - *Get a firewall rule version*
 
@@ -407,51 +371,15 @@ Progress: [████████████████░░░░] 80.2%
 
 ### 📁 Image sharing
 
-🔴 **Coverage**: 7/22 (32%)
-
-**Missing 3 endpoint(s):**
-
-#### `GET` — 2 endpoint(s)
-
-- **`/{apiVersion}/images/sharegroups`**
-  - *List share groups*
-
-- **`/{apiVersion}/images/sharegroups/tokens`**
-  - *List a user's tokens*
-
-#### `POST` — 1 endpoint(s)
-
-- **`/{apiVersion}/images/sharegroups`**
-  - *Create a share group*
-
+🟢 **Coverage**: 22/22 (100%)
 
 ### 📁 Images
 
-🔴 **Coverage**: 0/7 (0%)
-
-**Missing 3 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
-
-- **`/{apiVersion}/images`**
-  - *List images*
-
-#### `POST` — 2 endpoint(s)
-
-- **`/{apiVersion}/images`**
-  - *Create an image*
-
-- **`/{apiVersion}/images/upload`**
-  - *Upload an image*
-
+🟢 **Coverage**: 7/7 (100%)
 
 ### 📁 Managed Linode settings
 
 🔴 **Coverage**: 0/3 (0%)
-
-**Missing 3 endpoint(s):**
-
-#### `GET` — 2 endpoint(s)
 
 - **`/{apiVersion}/managed/linode-settings`**
   - *List managed Linode settings*
@@ -469,10 +397,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🟠 **Coverage**: 5/8 (62%)
 
-**Missing 3 endpoint(s):**
-
-#### `GET` — 2 endpoint(s)
-
 - **`/{apiVersion}/monitor/services/{serviceType}/dashboards`**
   - *List dashboards for a service type*
 
@@ -489,10 +413,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🟠 **Coverage**: 3/6 (50%)
 
-**Missing 3 endpoint(s):**
-
-#### `POST` — 3 endpoint(s)
-
 - **`/{apiVersion}/account/credit-card`**
   - *Add or edit a credit card (deprecated)*
 
@@ -507,10 +427,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🔴 **Coverage**: 0/2 (0%)
 
-**Missing 2 endpoint(s):**
-
-#### `POST` — 2 endpoint(s)
-
 - **`/{apiVersion}/networking/ipv4/assign`**
   - *Assign IPv4s to Linodes*
 
@@ -521,10 +437,6 @@ Progress: [████████████████░░░░] 80.2%
 ### 📁 Managed issues
 
 🔴 **Coverage**: 0/2 (0%)
-
-**Missing 2 endpoint(s):**
-
-#### `GET` — 2 endpoint(s)
 
 - **`/{apiVersion}/managed/issues`**
   - *List managed issues*
@@ -537,10 +449,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🔴 **Coverage**: 0/2 (0%)
 
-**Missing 2 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
-
 - **`/{apiVersion}/account/oauth-clients/{clientId}/thumbnail`**
   - *Get the OAuth client's thumbnail*
 
@@ -552,28 +460,11 @@ Progress: [████████████████░░░░] 80.2%
 
 ### 📁 Placement groups
 
-🔴 **Coverage**: 0/7 (0%)
-
-**Missing 2 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
-
-- **`/{apiVersion}/placement/groups`**
-  - *List placement groups*
-
-#### `POST` — 1 endpoint(s)
-
-- **`/{apiVersion}/placement/groups`**
-  - *Create a placement group*
-
+🟢 **Coverage**: 7/7 (100%)
 
 ### 📁 Replies
 
 🔴 **Coverage**: 0/2 (0%)
-
-**Missing 2 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
 
 - **`/{apiVersion}/support/tickets/{ticketId}/replies`**
   - *List replies*
@@ -588,10 +479,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🟠 **Coverage**: 2/4 (50%)
 
-**Missing 2 endpoint(s):**
-
-#### `POST` — 2 endpoint(s)
-
 - **`/{apiVersion}/support/tickets`**
   - *Open a support ticket*
 
@@ -603,10 +490,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🟠 **Coverage**: 2/3 (67%)
 
-**Missing 1 endpoint(s):**
-
-#### `POST` — 1 endpoint(s)
-
 - **`/{apiVersion}/account/cancel`**
   - *Delete your account*
 
@@ -614,10 +497,6 @@ Progress: [████████████████░░░░] 80.2%
 ### 📁 Account settings
 
 🟠 **Coverage**: 2/3 (67%)
-
-**Missing 1 endpoint(s):**
-
-#### `POST` — 1 endpoint(s)
 
 - **`/{apiVersion}/account/settings/managed-enable`**
   - *Enable Linode Managed*
@@ -627,33 +506,17 @@ Progress: [████████████████░░░░] 80.2%
 
 🔴 **Coverage**: 0/1 (0%)
 
-**Missing 1 endpoint(s):**
-
-#### `POST` — 1 endpoint(s)
-
 - **`/{apiVersion}/support/tickets/{ticketId}/attachments`**
   - *Create a support ticket attachment*
 
 
 ### 📁 Child accounts
 
-🔴 **Coverage**: 0/3 (0%)
-
-**Missing 1 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
-
-- **`/{apiVersion}/account/child-accounts`**
-  - *List child accounts*
-
+🟢 **Coverage**: 3/3 (100%)
 
 ### 📁 IP addresses
 
 🟡 **Coverage**: 12/13 (92%)
-
-**Missing 1 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
 
 - **`/{apiVersion}/vpcs/{vpcId}/ips`**
   - *List a VPC's IP addresses*
@@ -663,21 +526,13 @@ Progress: [████████████████░░░░] 80.2%
 
 🔴 **Coverage**: 0/1 (0%)
 
-**Missing 1 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
-
 - **`/{apiVersion}/lke/types`**
   - *List Kubernetes types*
 
 
 ### 📁 LKE versions
 
-🟠 **Coverage**: 2/4 (50%)
-
-**Missing 1 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
+🟡 **Coverage**: 3/4 (75%)
 
 - **`/{apiVersion}/lke/versions`**
   - *List LKE Kubernetes versions (non-enterprise)*
@@ -687,10 +542,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🟠 **Coverage**: 1/2 (50%)
 
-**Missing 1 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
-
 - **`/{apiVersion}/linode/types`**
   - *List types*
 
@@ -698,10 +549,6 @@ Progress: [████████████████░░░░] 80.2%
 ### 📁 Longview types
 
 🔴 **Coverage**: 0/1 (0%)
-
-**Missing 1 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
 
 - **`/{apiVersion}/longview/types`**
   - *List Longview types*
@@ -711,10 +558,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🔴 **Coverage**: 0/1 (0%)
 
-**Missing 1 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
-
 - **`/{apiVersion}/managed/credentials/sshkey`**
   - *Get a managed SSH key*
 
@@ -722,10 +565,6 @@ Progress: [████████████████░░░░] 80.2%
 ### 📁 Managed statistics
 
 🔴 **Coverage**: 0/1 (0%)
-
-**Missing 1 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
 
 - **`/{apiVersion}/managed/stats`**
   - *List managed stats*
@@ -735,10 +574,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🔴 **Coverage**: 0/1 (0%)
 
-**Missing 1 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
-
 - **`/{apiVersion}/network-transfer/prices`**
   - *List network transfer prices*
 
@@ -746,10 +581,6 @@ Progress: [████████████████░░░░] 80.2%
 ### 📁 Object Storage
 
 🟡 **Coverage**: 5/6 (83%)
-
-**Missing 1 endpoint(s):**
-
-#### `GET` — 1 endpoint(s)
 
 - **`/{apiVersion}/object-storage/types`**
   - *List Object Storage types*
@@ -759,10 +590,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🟡 **Coverage**: 4/5 (80%)
 
-**Missing 1 endpoint(s):**
-
-#### `POST` — 1 endpoint(s)
-
 - **`/{apiVersion}/account/payment-methods/{paymentMethodId}/make-default`**
   - *Set a default payment method*
 
@@ -771,10 +598,6 @@ Progress: [████████████████░░░░] 80.2%
 
 🟠 **Coverage**: 2/3 (67%)
 
-**Missing 1 endpoint(s):**
-
-#### `DELETE` — 1 endpoint(s)
-
 - **`/{apiVersion}/profile/phone-number`**
   - *Delete a phone number*
 
@@ -782,10 +605,6 @@ Progress: [████████████████░░░░] 80.2%
 ### 📁 VLANs
 
 🟠 **Coverage**: 1/2 (50%)
-
-**Missing 1 endpoint(s):**
-
-#### `DELETE` — 1 endpoint(s)
 
 - **`/{apiVersion}/networking/vlans/{regionId}/{label}`**
   - *Delete a VLAN*
