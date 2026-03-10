@@ -1,13 +1,13 @@
 # Linode API v4 SDK Gap Report
 
-_Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-03-10. SDK analyzed: this repo at current HEAD. Paths normalize `{apiVersion}` and format placeholders to `{}` for comparison.
+_Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-03-10. SDK analyzed: this repo at current HEAD. Paths normalize `{apiVersion}` and format placeholders to `{}` for comparison, including inline `formatAPIPath`, `fmt.Sprintf`, string literals, and action helpers (e.g., `simpleInstanceAction`).
 
 ## Coverage Summary
 - Documented endpoints: 465
-- SDK-implemented endpoints: 388
-- Missing endpoints: 77
-- SDK endpoints not in spec: 25
-- Implemented endpoints with parameter mapping gaps: 127
+- SDK-implemented endpoints: 397
+- Missing endpoints: 68
+- SDK endpoints not in spec: 26
+- Implemented endpoints with parameter mapping gaps: 128
 
 ## Endpoint Coverage
 | Method | Path | Status | SDK Function |
@@ -471,7 +471,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | /{apiVersion}/vpcs/{vpcId} | Implemented | GetVPC |
 | PUT | /{apiVersion}/vpcs/{vpcId} | Implemented | UpdateVPC |
 | DELETE | /{apiVersion}/vpcs/{vpcId} | Implemented | DeleteVPC |
-| GET | /{apiVersion}/vpcs/{vpcId}/ips | Missing |  |
+| GET | /{apiVersion}/vpcs/{vpcId}/ips | Implemented | ListVPCIPAddresses |
 | POST | /{apiVersion}/vpcs/{vpcId}/subnets | Implemented | CreateVPCSubnet |
 | GET | /{apiVersion}/vpcs/{vpcId}/subnets | Implemented | ListVPCSubnets |
 | GET | /{apiVersion}/vpcs/{vpcId}/subnets/{vpcSubnetId} | Implemented | GetVPCSubnet |
@@ -605,6 +605,7 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | POST | /{apiVersion}/vpcs | CreateVPC | - | description;ipv6;label;region;subnets | - | - |
 | GET | /{apiVersion}/vpcs | ListVPCs | - | - | page;page_size | - |
 | GET | /{apiVersion}/vpcs/ips | ListAllVPCIPAddresses | - | - | page;page_size | - |
+| GET | /{apiVersion}/vpcs/{vpcId}/ips | ListVPCIPAddresses | - | - | page;page_size | - |
 | POST | /{apiVersion}/vpcs/{vpcId}/subnets | CreateVPCSubnet | - | ipv6 | - | - |
 | GET | /{apiVersion}/vpcs/{vpcId}/subnets | ListVPCSubnets | - | - | page;page_size | - |
 ## SDK Endpoints Not In Spec
@@ -635,3 +636,4 @@ _Source spec:_ linode-api-openapi `openapi.json` (main branch) fetched on 2026-0
 | GET | networking/prefixlists/%d | GetPrefixList |
 | GET | regions/%s/vpc-availability | GetRegionVPCAvailability |
 | GET | vpcs/ipv6s | ListAllVPCIPv6Addresses |
+| GET | vpcs/%d/ipv6s | ListVPCIPv6Addresses |
