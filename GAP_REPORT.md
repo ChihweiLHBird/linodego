@@ -8,9 +8,9 @@ against the [linodego](https://github.com/linode/linodego) Go SDK implementation
 | Metric | Count |
 |--------|-------|
 | Total API endpoints (from OpenAPI spec) | 465 |
-| Implemented in SDK | 396 |
-| Missing from SDK | 69 |
-| Endpoint coverage | 85.2% |
+| Implemented in SDK | 397 |
+| Missing from SDK | 68 |
+| Endpoint coverage | 85.4% |
 | SDK methods without matching OpenAPI endpoint | 26 |
 
 ## Coverage by Category
@@ -54,7 +54,7 @@ against the [linodego](https://github.com/linode/linodego) Go SDK implementation
 | IPv6 pools | 1 | 1 | 0 | 100% |
 | IPv6 ranges | 4 | 4 | 0 | 100% |
 | Identity Management | 4 | 4 | 0 | 100% |
-| Image sharing | 22 | 21 | 1 | 95% |
+| Image sharing | 22 | 22 | 0 | 100% |
 | Images | 7 | 7 | 0 | 100% |
 | Invoices | 3 | 3 | 0 | 100% |
 | Kernels | 2 | 2 | 0 | 100% |
@@ -502,7 +502,7 @@ against the [linodego](https://github.com/linode/linodego) Go SDK implementation
 | GET | `images/sharegroups/{sharegroupId}` | ✅ Implemented | GetImageShareGroup |  |
 | PUT | `images/sharegroups/{sharegroupId}` | ✅ Implemented | UpdateImageShareGroup |  |
 | GET | `images/sharegroups/{sharegroupId}/images` | ✅ Implemented | ImageShareGroupListImageShareEntries |  |
-| POST | `images/sharegroups/{sharegroupId}/images` | ❌ Missing |  | Add images to a share group |
+| POST | `images/sharegroups/{sharegroupId}/images` | ✅ Implemented | ImageShareGroupAddImages |  |
 | DELETE | `images/sharegroups/{sharegroupId}/images/{imageId}` | ✅ Implemented | ImageShareGroupRemoveImage |  |
 | PUT | `images/sharegroups/{sharegroupId}/images/{imageId}` | ✅ Implemented | ImageShareGroupUpdateImageShareEntry |  |
 | GET | `images/sharegroups/{sharegroupId}/members` | ✅ Implemented | ImageShareGroupListMembers |  |
@@ -2457,6 +2457,18 @@ that are absent from the corresponding SDK Options struct (request body) or resp
 - `expiry`
 - `updated`
 
+#### `POST images/sharegroups/{sharegroupId}/images` → `ImageShareGroupAddImages`
+
+- **Options struct:** `ImageShareGroupAddImagesOptions`
+- **Response struct:** `ImageShareEntry`
+
+**Missing response fields** (documented but not in SDK response struct):
+
+- `created`
+- `eol`
+- `expiry`
+- `updated`
+
 #### `PUT images/sharegroups/{sharegroupId}/images/{imageId}` → `ImageShareGroupUpdateImageShareEntry`
 
 - **Options struct:** `ImageShareGroupUpdateImageOptions`
@@ -4274,31 +4286,30 @@ Complete list of API endpoints documented in the OpenAPI spec that are not imple
 | 39 | POST | `account/payments/paypal` | `post-pay-pal-payment` | Stage a PayPal payment |
 | 40 | POST | `account/payments/paypal/execute` | `post-execute-pay-pal-payment` | Execute a PayPal payment |
 | 41 | POST | `account/settings/managed-enable` | `post-enable-account-managed` | Enable Linode Managed |
-| 42 | POST | `images/sharegroups/{sharegroupId}/images` | `post-sharegroup-images` | Add images to a share group |
-| 43 | POST | `linode/instances/{linodeId}/firewalls/apply` | `post-apply-firewalls` | Apply a Linode's firewalls |
-| 44 | POST | `managed/contacts` | `post-managed-contact` | Create a managed contact |
-| 45 | POST | `managed/credentials` | `post-managed-credential` | Create a managed credential |
-| 46 | POST | `managed/credentials/{credentialId}/revoke` | `post-managed-credential-revoke` | Delete a managed credential |
-| 47 | POST | `managed/credentials/{credentialId}/update` | `post-managed-credential-username-password` | Update a managed credential's username and password |
-| 48 | POST | `managed/services` | `post-managed-service` | Create a managed service |
-| 49 | POST | `managed/services/{serviceId}/disable` | `post-disable-managed-service` | Disable a managed service monitor |
-| 50 | POST | `managed/services/{serviceId}/enable` | `post-enable-managed-service` | Enable a managed service monitor |
-| 51 | POST | `monitor/services/{serviceType}/metrics` | `post-read-metric` | Get an entity's metrics |
-| 52 | POST | `monitor/streams` | `post-stream` | Create a stream |
-| 53 | POST | `monitor/streams/destinations` | `post-destination` | Create a destination |
-| 54 | POST | `networking/ipv4/assign` | `post-assign-ipv4s` | Assign IPv4s to Linodes |
-| 55 | POST | `networking/ipv4/share` | `post-share-ipv4s` | Configure IPv4 sharing |
-| 56 | POST | `support/tickets` | `post-ticket` | Open a support ticket |
-| 57 | POST | `support/tickets/{ticketId}/attachments` | `post-ticket-attachment` | Create a support ticket attachment |
-| 58 | POST | `support/tickets/{ticketId}/close` | `post-close-ticket` | Close a support ticket |
-| 59 | POST | `support/tickets/{ticketId}/replies` | `post-ticket-reply` | Create a reply |
-| 60 | PUT | `account/oauth-clients/{clientId}/thumbnail` | `put-client-thumbnail` | Update the OAuth client's thumbnail |
-| 61 | PUT | `linode/instances/{linodeId}/firewalls` | `put-linode-firewalls` | Update a Linode's firewalls |
-| 62 | PUT | `managed/contacts/{contactId}` | `put-managed-contact` | Update a managed contact |
-| 63 | PUT | `managed/credentials/{credentialId}` | `put-managed-credential` | Update a managed credential |
-| 64 | PUT | `managed/linode-settings/{linodeId}` | `put-managed-linode-setting` | Update a Linode's managed settings |
-| 65 | PUT | `managed/services/{serviceId}` | `put-managed-service` | Update a managed service monitor |
-| 66 | PUT | `monitor/streams/destinations/{destinationId}` | `put-destination` | Update a destination |
-| 67 | PUT | `monitor/streams/{streamId}` | `put-stream` | Update a stream |
-| 68 | PUT | `nodebalancers/{nodeBalancerId}/firewalls` | `put-node-balancer-firewalls` | Update a NodeBalancer's firewalls |
-| 69 | PUT | `object-storage/buckets/{regionId}/{bucket}/access` | `put-storage-bucket-access` | Update access to an Object Storage bucket |
+| 42 | POST | `linode/instances/{linodeId}/firewalls/apply` | `post-apply-firewalls` | Apply a Linode's firewalls |
+| 43 | POST | `managed/contacts` | `post-managed-contact` | Create a managed contact |
+| 44 | POST | `managed/credentials` | `post-managed-credential` | Create a managed credential |
+| 45 | POST | `managed/credentials/{credentialId}/revoke` | `post-managed-credential-revoke` | Delete a managed credential |
+| 46 | POST | `managed/credentials/{credentialId}/update` | `post-managed-credential-username-password` | Update a managed credential's username and password |
+| 47 | POST | `managed/services` | `post-managed-service` | Create a managed service |
+| 48 | POST | `managed/services/{serviceId}/disable` | `post-disable-managed-service` | Disable a managed service monitor |
+| 49 | POST | `managed/services/{serviceId}/enable` | `post-enable-managed-service` | Enable a managed service monitor |
+| 50 | POST | `monitor/services/{serviceType}/metrics` | `post-read-metric` | Get an entity's metrics |
+| 51 | POST | `monitor/streams` | `post-stream` | Create a stream |
+| 52 | POST | `monitor/streams/destinations` | `post-destination` | Create a destination |
+| 53 | POST | `networking/ipv4/assign` | `post-assign-ipv4s` | Assign IPv4s to Linodes |
+| 54 | POST | `networking/ipv4/share` | `post-share-ipv4s` | Configure IPv4 sharing |
+| 55 | POST | `support/tickets` | `post-ticket` | Open a support ticket |
+| 56 | POST | `support/tickets/{ticketId}/attachments` | `post-ticket-attachment` | Create a support ticket attachment |
+| 57 | POST | `support/tickets/{ticketId}/close` | `post-close-ticket` | Close a support ticket |
+| 58 | POST | `support/tickets/{ticketId}/replies` | `post-ticket-reply` | Create a reply |
+| 59 | PUT | `account/oauth-clients/{clientId}/thumbnail` | `put-client-thumbnail` | Update the OAuth client's thumbnail |
+| 60 | PUT | `linode/instances/{linodeId}/firewalls` | `put-linode-firewalls` | Update a Linode's firewalls |
+| 61 | PUT | `managed/contacts/{contactId}` | `put-managed-contact` | Update a managed contact |
+| 62 | PUT | `managed/credentials/{credentialId}` | `put-managed-credential` | Update a managed credential |
+| 63 | PUT | `managed/linode-settings/{linodeId}` | `put-managed-linode-setting` | Update a Linode's managed settings |
+| 64 | PUT | `managed/services/{serviceId}` | `put-managed-service` | Update a managed service monitor |
+| 65 | PUT | `monitor/streams/destinations/{destinationId}` | `put-destination` | Update a destination |
+| 66 | PUT | `monitor/streams/{streamId}` | `put-stream` | Update a stream |
+| 67 | PUT | `nodebalancers/{nodeBalancerId}/firewalls` | `put-node-balancer-firewalls` | Update a NodeBalancer's firewalls |
+| 68 | PUT | `object-storage/buckets/{regionId}/{bucket}/access` | `put-storage-bucket-access` | Update access to an Object Storage bucket |
