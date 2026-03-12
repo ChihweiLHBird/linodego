@@ -8,9 +8,9 @@ against the [linodego](https://github.com/linode/linodego) Go SDK implementation
 | Metric | Count |
 |--------|-------|
 | Total API endpoints (from OpenAPI spec) | 465 |
-| Implemented in SDK | 397 |
-| Missing from SDK | 68 |
-| Endpoint coverage | 85.4% |
+| Implemented in SDK | 398 |
+| Missing from SDK | 67 |
+| Endpoint coverage | 85.6% |
 | SDK methods without matching OpenAPI endpoint | 26 |
 
 ## Coverage by Category
@@ -47,7 +47,7 @@ against the [linodego](https://github.com/linode/linodego) Go SDK implementation
 | Entity transfers | 5 | 0 | 5 | 0% |
 | Events | 3 | 3 | 0 | 100% |
 | Firewall settings | 2 | 2 | 0 | 100% |
-| Firewalls | 14 | 9 | 5 | 64% |
+| Firewalls | 14 | 10 | 4 | 71% |
 | Grants | 1 | 1 | 0 | 100% |
 | IP addresses | 13 | 13 | 0 | 100% |
 | IPv4 addresses | 2 | 0 | 2 | 0% |
@@ -416,7 +416,7 @@ against the [linodego](https://github.com/linode/linodego) Go SDK implementation
 | Method | Endpoint | Status | SDK Method | Notes |
 |--------|----------|--------|------------|-------|
 | GET | `linode/instances/{linodeId}/firewalls` | ✅ Implemented | ListInstanceFirewalls |  |
-| PUT | `linode/instances/{linodeId}/firewalls` | ❌ Missing |  | Update a Linode's firewalls |
+| PUT | `linode/instances/{linodeId}/firewalls` | ✅ Implemented | UpdateInstanceFirewalls |  |
 | POST | `linode/instances/{linodeId}/firewalls/apply` | ❌ Missing |  | Apply a Linode's firewalls |
 | GET | `networking/firewalls` | ✅ Implemented | ListFirewalls |  |
 | POST | `networking/firewalls` | ✅ Implemented | CreateFirewall |  |
@@ -2011,6 +2011,17 @@ that are absent from the corresponding SDK Options struct (request body) or resp
 #### `GET linode/instances/{linodeId}/firewalls` → `ListInstanceFirewalls`
 
 - **Options struct:** `—`
+- **Response struct:** `Firewall`
+
+**Missing response fields** (documented but not in SDK response struct):
+
+- `created`
+- `entities`
+- `updated`
+
+#### `PUT linode/instances/{linodeId}/firewalls` → `UpdateInstanceFirewalls`
+
+- **Options struct:** `InstanceFirewallUpdateOptions`
 - **Response struct:** `Firewall`
 
 **Missing response fields** (documented but not in SDK response struct):
@@ -4304,12 +4315,11 @@ Complete list of API endpoints documented in the OpenAPI spec that are not imple
 | 57 | POST | `support/tickets/{ticketId}/close` | `post-close-ticket` | Close a support ticket |
 | 58 | POST | `support/tickets/{ticketId}/replies` | `post-ticket-reply` | Create a reply |
 | 59 | PUT | `account/oauth-clients/{clientId}/thumbnail` | `put-client-thumbnail` | Update the OAuth client's thumbnail |
-| 60 | PUT | `linode/instances/{linodeId}/firewalls` | `put-linode-firewalls` | Update a Linode's firewalls |
-| 61 | PUT | `managed/contacts/{contactId}` | `put-managed-contact` | Update a managed contact |
-| 62 | PUT | `managed/credentials/{credentialId}` | `put-managed-credential` | Update a managed credential |
-| 63 | PUT | `managed/linode-settings/{linodeId}` | `put-managed-linode-setting` | Update a Linode's managed settings |
-| 64 | PUT | `managed/services/{serviceId}` | `put-managed-service` | Update a managed service monitor |
-| 65 | PUT | `monitor/streams/destinations/{destinationId}` | `put-destination` | Update a destination |
-| 66 | PUT | `monitor/streams/{streamId}` | `put-stream` | Update a stream |
-| 67 | PUT | `nodebalancers/{nodeBalancerId}/firewalls` | `put-node-balancer-firewalls` | Update a NodeBalancer's firewalls |
-| 68 | PUT | `object-storage/buckets/{regionId}/{bucket}/access` | `put-storage-bucket-access` | Update access to an Object Storage bucket |
+| 60 | PUT | `managed/contacts/{contactId}` | `put-managed-contact` | Update a managed contact |
+| 61 | PUT | `managed/credentials/{credentialId}` | `put-managed-credential` | Update a managed credential |
+| 62 | PUT | `managed/linode-settings/{linodeId}` | `put-managed-linode-setting` | Update a Linode's managed settings |
+| 63 | PUT | `managed/services/{serviceId}` | `put-managed-service` | Update a managed service monitor |
+| 64 | PUT | `monitor/streams/destinations/{destinationId}` | `put-destination` | Update a destination |
+| 65 | PUT | `monitor/streams/{streamId}` | `put-stream` | Update a stream |
+| 66 | PUT | `nodebalancers/{nodeBalancerId}/firewalls` | `put-node-balancer-firewalls` | Update a NodeBalancer's firewalls |
+| 67 | PUT | `object-storage/buckets/{regionId}/{bucket}/access` | `put-storage-bucket-access` | Update access to an Object Storage bucket |
